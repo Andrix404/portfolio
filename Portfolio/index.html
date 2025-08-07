@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thidaksha Meghan | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="Resources/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      cursor: none;
+    }
+
+    :root {
+      --bg-color: #0b0b0c;
+      --text-color: #fff;
+      --accent-color: #ae00ff;
+      --card-color: #1e1e1e;
+    }
+
+    body.light-mode {
+      --bg-color: #f5f5f5;
+      --text-color: #111;
+      --accent-color: #6c00ff;
+      --card-color: #fff;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      overflow-x: hidden;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background-color: var(--bg-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #preloader span {
+      display: block;
+      width: 40px;
+      height: 40px;
+      border: 5px solid var(--accent-color);
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: var(--text-color);
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
+    .toggle-btn {
+      background: var(--accent-color);
+      border: none;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .hero {
+      padding: 80px 60px;
+      text-align: center;
+      animation: fadeIn 2s ease-in;
+    }
+
+    .hero img {
+      width: 140px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      box-shadow: 0 0 20px var(--accent-color);
+      animation: bounce 2s infinite;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 700px;
+      margin: auto;
+      color: #ccc;
+    }
+
+    .projects,
+    .experience,
+    .contact {
+      padding: 60px;
+      background: #121212;
+    }
+
+    body.light-mode .projects,
+    body.light-mode .experience,
+    body.light-mode .contact {
+      background: #eaeaea;
+    }
+
+    h2 {
+      font-size: 32px;
+      color: var(--accent-color);
+      margin-bottom: 40px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .project {
+      background: var(--card-color);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px #ae00ff50;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px var(--accent-color);
+    }
+
+    .project img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .project h3 {
+      color: var(--text-color);
+    }
+
+    .footer {
+      padding: 40px;
+      background-color: var(--bg-color);
+      text-align: center;
+      color: #777;
+    }
+
+    .footer a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .custom-cursor {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--accent-color);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+    }
+
+    .contact form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact input,
+    .contact textarea {
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #333;
+      color: white;
+    }
+
+    .contact input:focus,
+    .contact textarea:focus {
+      outline: 2px solid var(--accent-color);
+    }
+
+    .contact button {
+      background: var(--accent-color);
+      border: none;
+      padding: 12px;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .contact button:hover {
+      background: #8800cc;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+
+      nav a {
+        margin: 10px 10px 0 0;
+      }
+
+      .hero,
+      .projects,
+      .experience,
+      .contact {
+        padding: 40px 20px;
+      }
+
+      .contact div a:hover {
+        transform: scale(1.2);
+        filter: drop-shadow(0 0 6px var(--accent-color));
+        transition: transform 0.3s ease, filter 0.3s ease;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <div id="preloader"><span></span></div>
+  <div class="custom-cursor" id="cursor"></div>
+
+  <header>
+    <div style="font-size: 24px; color: var(--accent-color); font-weight: bold;">Thidaksha M.</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+      <button class="toggle-btn" onclick="toggleMode()">Toggle Mode</button>
+    </nav>
+  </header>
+
+  <section class="hero" id="about">
+    <img src="Resources\photo_2025-08-08_02-05-40.jpg" alt="avatar">
+    <h1>Hey! I'm Thidaksha Meghan</h1>
+    <p>A creative coder, UI/UX enthusiast, and tech explorer. I build smart software, sleek websites, and systems that
+      just work. Founder of Andrix. Developer at Cybertech. Currently turning caffeine into code and ideas into
+      innovation. 🚀</p>
+  </section>
+
+  <section class="projects" id="projects">
+    <h2>My Projects</h2>
+    <div class="project-grid">
+      <div class="project">
+        <img src="Resources\Screenshot 2025-08-08 020704.png" alt="NanoBee">
+        <h3>Nanobee</h3>
+        <p>Website for a software company with a modern UI and sleek features.</p>
+      </div>
+      <div class="project">
+        <img src="Resources\Screenshot 2025-08-08 020758.png" alt="Cyberbot">
+        <h3>Cyberbot</h3>
+        <p>A laptop shop web portal with an elegant eCommerce layout.</p>
+      </div>
+      <div class="project">
+        <img src="Resources\Screenshot 2025-08-08 020911.png" alt="Product Manager">
+        <h3>Product Management System</h3>
+        <p>System built for Cybertech to manage inventory and product flow efficiently.</p>
+      </div>
+    </div>
+  </section>
+
+   <section class="orbit-hero">
+    <div class="center-logo">
+      <img src="Resources\supercoil-svgrepo-com.svg" alt="Logo" />
+    </div>
+    <div class="orbit orbit-1">
+      <img src="Resources\icons8-html.svg" alt="HTML" class="orbit-icon" />
+      <img src="Resources\icons8-css-100.png" alt="CSS" class="orbit-icon" />
+    </div>
+    <div class="orbit orbit-2">
+      <img src="Resources\icons8-js-100.png" alt="JS" class="orbit-icon" />
+      <img src="Resources\icons8-react-100.png" alt="React" class="orbit-icon" />
+    </div>
+    <div class="orbit orbit-3">
+      <img src="Resources\icons8-figma-100.png" alt="Figma" class="orbit-icon" />
+      <img src="Resources\icons8-node-js-100.png" alt="Node" class="orbit-icon" />
+    </div>
+    
+  </section>
+  
+  <section class="experience" id="experience">
+    <h2>Experience</h2>
+    <div class="project-grid">
+      <div class="project">
+        <h3>Developer at Cybertech</h3>
+        <p>Building internal systems and web solutions for business automation.</p>
+      </div>
+      <div class="project">
+        <h3>Founder of Andrix</h3>
+        <p>Started a tech initiative to build futuristic and usable software products.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" name="user_name" placeholder="Your Name" required>
+      <input type="email" name="user_email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div style="margin-top: 30px; text-align: center;">
+      <h3>Connect with me</h3>
+      <div style="margin-top: 10px;">
+        <a href="https://github.com/YourUsername" target="_blank"
+          style="margin: 0 15px; font-size: 28px; color: var(--accent-color);">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://linkedin.com/in/YourUsername" target="_blank"
+          style="margin: 0 15px; font-size: 28px; color: var(--accent-color);">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://twitter.com/YourUsername" target="_blank"
+          style="margin: 0 15px; font-size: 28px; color: var(--accent-color);">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://instagram.com/YourUsername" target="_blank"
+          style="margin: 0 15px; font-size: 28px; color: var(--accent-color);">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <audio id="hoverSound"
+    src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_d3255a9e34.mp3?filename=click-124467.mp3"></audio>
+  <audio id="clickSound"
+    src="https://cdn.pixabay.com/download/audio/2022/03/18/audio_feff61edbd.mp3?filename=interface-click-124476.mp3"></audio>
+
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+
+    const heroHeading = document.querySelector('.hero h1');
+    const fullText = heroHeading.textContent;
+    heroHeading.textContent = '';
+    let index = 0;
+
+    function typeEffect() {
+      if (index < fullText.length) {
+        heroHeading.textContent += fullText.charAt(index);
+        index++;
+        setTimeout(typeEffect, 80);
+      }
+    }
+    window.addEventListener('load', typeEffect);
+
+
+    emailjs.init("service_j48zhlj");
+
+    document.querySelector("form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      emailjs.sendForm("service_j48zhlj", "template_3iz24ea", this)
+        .then(() => {
+          alert("Message sent!");
+          this.reset();
+        }, (err) => {
+          alert("Failed to send: " + JSON.stringify(err));
+        });
+    });
+
+
+    // Preloader
+    window.addEventListener("load", () => {
+      document.getElementById("preloader").style.display = "none";
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+        document.getElementById('clickSound').play();
+      });
+    });
+
+    // Theme toggle
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
+      document.getElementById('clickSound').play();
+    }
+
+    // Scroll animation
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = "fadeIn 1.5s forwards";
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    sections.forEach(section => {
+      section.style.opacity = 0;
+      observer.observe(section);
+    });
+
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+
+    // Sound effect
+    const hoverSound = document.getElementById('hoverSound');
+    document.querySelectorAll('a, button, input, textarea').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        hoverSound.currentTime = 0;
+        hoverSound.play();
+      });
+    });
+
+    // Load saved theme preference
+    window.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+      }
+    });
+
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
+      // Save preference
+      if (document.body.classList.contains('light-mode')) {
+        localStorage.setItem('theme', 'light');
+      } else {
+        localStorage.setItem('theme', 'dark');
+      }
+      document.getElementById('clickSound').play();
+    }
+
+    // Load saved theme preference
+    window.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+      }
+    });
+
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
+      // Save preference
+      if (document.body.classList.contains('light-mode')) {
+        localStorage.setItem('theme', 'light');
+      } else {
+        localStorage.setItem('theme', 'dark');
+      }
+      document.getElementById('clickSound').play();
+    }
+
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+    window.onscroll = () => {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        scrollTopBtn.style.display = "block";
+      } else {
+        scrollTopBtn.style.display = "none";
+      }
+    };
+
+    scrollTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      document.getElementById('clickSound').play();
+    });
+
+    
+
+  </script>
+
+  <button id="scrollTopBtn" title="Go to top">⬆️</button>
+
+
+</body>
+
+</html>
