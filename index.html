@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Thidaksha Meghan | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="Resources/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="prefetch" href="js/admin-panel.js">
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="js/visitor-tracking.js" defer></script>
+  <script src="js/admin-panel.js" defer></script>
+  <script src="js/project-management.js" defer></script>
+  <script src="js/site-init.js" defer></script>
+  <script src="main.js" defer></script>
+</head>
+
+<body>
+
+   <!-- <div id="maintenance-overlay" style="
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: #0b0b0c;
+    color: #fff;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    z-index: 99999;
+    font-size: 2rem;
+    text-align: center;
+  ">
+    <h1>Site Under Maintenance</h1>
+    <p>We're making updates. Please check back soon!</p>
+  </div> -->
+ 
+
+  <div id="particles-js"></div>
+  <div id="preloader"><span></span></div>
+  <div id="welcome-animation">
+    <div class="welcome-content">
+      <h1 class="welcome-text">Welcome</h1>
+      <h2 class="name-text">"Welcome to my professional portfolio — where ideas meet execution."</h2>
+      <div class="loading-bar">
+        <div class="loading-progress"></div>
+      </div>
+    </div>
+  </div>
+  <div class="custom-cursor" id="cursor"></div>
+
+  <header>
+    <div class="logo-name">Thidaksha M.</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+      <div class="color-picker-container">
+        <input type="color" id="accent-color-picker" class="color-picker" value="#ae00ff">
+        <button class="toggle-btn" onclick="toggleMode()">Toggle Mode</button>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero" id="about">
+    <img src="Resources\photo_2025-08-08_02-05-40.jpg" alt="avatar" loading="lazy">
+    <h1>Hey! I'm Thidaksha Meghan</h1>
+    <p>A creative coder, UI/UX enthusiast, and tech explorer. I build smart software, sleek websites, and systems that
+      just work. Founder of Andrix. Developer at Cybertech. Currently turning caffeine into code and ideas into
+      innovation. 🚀</p>
+    <a href="#projects" class="cta-button">View My Work</a>
+  </section>
+
+  <section class="projects" id="projects">
+    <h2>My Projects</h2>
+    <div class="project-grid" id="projects-container">
+      <!-- Projects will be dynamically loaded here -->
+    </div>
+  </section>
+  
+  <section class="skills" id="skills">
+    <h2>My Skills</h2>
+    <div class="skills-container">
+      <div class="skill-category">
+        <h3>Frontend</h3>
+        <div class="skill-bar">
+          <span>HTML/CSS</span>
+          <div class="progress">
+            <div class="progress-fill" style="width: 95%"></div>
+          </div>
+        </div>
+        <div class="skill-bar">
+          <span>JavaScript</span>
+          <div class="progress">
+            <div class="progress-fill" style="width: 90%"></div>
+          </div>
+        </div>
+        <div class="skill-bar">
+          <span>React</span>
+          <div class="progress">
+            <div class="progress-fill" style="width: 85%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h3>Backend</h3>
+        <div class="skill-bar">
+          <span>Node.js</span>
+          <div class="progress">
+            <div class="progress-fill" style="width: 80%"></div>
+          </div>
+        </div>
+        <div class="skill-bar">
+          <span>Express</span>
+          <div class="progress">
+            <div class="progress-fill" style="width: 75%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h3>Design</h3>
+        <div class="skill-bar">
+          <span>UI/UX</span>
+          <div class="progress">
+            <div class="progress-fill" style="width: 85%"></div>
+          </div>
+        </div>
+        <div class="skill-bar">
+          <span>Figma</span>
+          <div class="progress">
+            <div class="progress-fill" style="width: 80%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programming Languages Carousel -->
+  <section class="tech-carousel">
+    <h2>Technologies & Skills</h2>
+    <div class="carousel-container">
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="Resources\icons8-html.svg" alt="HTML" loading="lazy" />
+          <span>HTML</span>
+        </div>
+        <div class="carousel-slide">
+          <img src="Resources\icons8-css-100.png" alt="CSS" loading="lazy" />
+          <span>CSS</span>
+        </div>
+        <div class="carousel-slide">
+          <img src="Resources\icons8-js-100.png" alt="JavaScript" loading="lazy" />
+          <span>JavaScript</span>
+        </div>
+        <div class="carousel-slide">
+          <img src="Resources\icons8-react-100.png" alt="React" loading="lazy" />
+          <span>React</span>
+        </div>
+        <div class="carousel-slide">
+          <img src="Resources\icons8-node-js-100.png" alt="Node.js" loading="lazy" />
+          <span>Node.js</span>
+        </div>
+        <div class="carousel-slide">
+          <img src="Resources\icons8-figma-100.png" alt="Figma" loading="lazy" />
+          <span>Figma</span>
+        </div>
+        <!-- Duplicate items for seamless looping -->
+        <div class="carousel-slide">
+          <img src="Resources\icons8-html.svg" alt="HTML" loading="lazy" />
+          <span>HTML</span>
+        </div>
+        <div class="carousel-slide">
+          <img src="Resources\icons8-css-100.png" alt="CSS" loading="lazy" />
+          <span>CSS</span>
+        </div>
+        <div class="carousel-slide">
+          <img src="Resources\icons8-js-100.png" alt="JavaScript" loading="lazy" />
+          <span>JavaScript</span>
+        </div>
+        <div class="carousel-slide">
+          <img src="Resources\icons8-react-100.png" alt="React" loading="lazy" />
+          <span>React</span>
+        </div>
+        <div class="carousel-slide">
+          <img src="Resources\icons8-node-js-100.png" alt="Node.js" loading="lazy" />
+          <span>Node.js</span>
+        </div>
+        <div class="carousel-slide">
+          <img src="Resources\icons8-figma-100.png" alt="Figma" loading="lazy" />
+          <span>Figma</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Add hover effects to carousel items
+    document.querySelectorAll('.carousel-slide').forEach(slide => {
+      slide.addEventListener('mouseenter', function () {
+        this.style.transform = 'scale(1.1)';
+        this.style.boxShadow = '0 0 20px color-mix(in srgb, var(--accent-color) 70%, transparent)';
+      });
+
+      slide.addEventListener('mouseleave', function () {
+        this.style.transform = 'scale(1)';
+        this.style.boxShadow = 'none';
+      });
+    });
+  </script>
+
+  <section class="experience" id="experience">
+    <h2>Experience</h2>
+    <div class="project-grid">
+      <div class="project">
+        <h3>Developer at Cybertech</h3>
+        <p>Building internal systems and web solutions for business automation.</p>
+      </div>
+      <div class="project">
+        <h3>Founder of Andrix</h3>
+        <p>Started a tech initiative to build futuristic and usable software products.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Contact Me</h2>
+    <div class="contact-container">
+      <div class="contact-info">
+        <div class="contact-card">
+          <i class="fas fa-envelope"></i>
+          <h3>Email</h3>
+          <p>Thidakshameghan@gmail.com</p>
+        </div>
+        <div class="contact-card">
+          <i class="fas fa-phone"></i>
+          <h3>Phone</h3>
+          <p>+94 76 870 6773</p>
+        </div>
+        <div class="contact-card">
+          <i class="fas fa-map-marker-alt"></i>
+          <h3>Location</h3>
+          <p>3B 1/4, Havelock Road, Colombo 05</p>
+        </div>
+        <div class="contact-card">
+          <i class="fas fa-clock"></i>
+          <h3>Response Time</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <span>Mon-Fri</span>
+              <span>Within 2 hours</span>
+            </div>
+            <div class="timeline-item">
+              <span>Weekends</span>
+              <span>Within 24 hours</span>
+            </div>
+          </div>
+        </div>
+        <div class="map-placeholder">
+          <h3>Find Me</h3>
+          <div class="map-container">
+            <iframe src="https://www.google.com/maps?q=3B+1/4,+Havelock+Road,+Colombo+05,+Sri+Lanka&output=embed" width="100%" height="200"
+              style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <form action="https://formspree.io/f/meozvpzy" method="POST">
+          <div class="form-group">
+            <input type="text" name="user_name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" name="user_email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <input type="tel" name="user_phone" placeholder="Your Phone (Optional)">
+          </div>
+          <div class="form-group">
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+          </div>
+          <button type="submit">Send Message</button>
+          <div class="form-message" id="form-message"></div>
+        </form>
+        <div class="social-connect">
+          <h3>Connect with me</h3>
+          <div class="social-icons">
+            <a href="https://github.com/thidaksha" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/meghan-thidaksha-469174271" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://twitter.com/thidaksha" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://instagram.com/thidaksha" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <audio id="hoverSound"
+    src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_d3255a9e34.mp3?filename=click-124467.mp3"></audio>
+  <audio id="clickSound"
+    src="https://cdn.pixabay.com/download/audio/2022/03/18/audio_feff61edbd.mp3?filename=interface-click-124476.mp3"></audio>
+  <audio id="orbitSound"
+    src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_70b70325b7.mp3?filename=sci-fi-interface-124463.mp3"></audio>
+  <audio id="projectSound"
+    src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_70b70325b7.mp3?filename=sci-fi-interface-124463.mp3"></audio>
+
+  <footer class="footer">
+    <div class="social-icons">
+      <a href="https://github.com/thidaksha" target="_blank">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/meghan-thidaksha-469174271" target="_blank">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://twitter.com/thidaksha" target="_blank">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://instagram.com/thidaksha" target="_blank">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+    <p>&copy; 2025 Thidaksha Meghan. All rights reserved.</p>
+    <p>Designed & developed by Andrix in Sri Lanka &copy; —creativity meets code.</p>
+    <!-- Admin access link (hidden) -->
+    <a href="#" id="admin-link" style="display: none;" onclick="showAdminPanel()">Admin Panel</a>
+  </footer>
+</body>
+
+</html>
